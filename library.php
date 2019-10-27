@@ -1,7 +1,7 @@
 <?php
 	$SERVER = 'http://cs4750.cs.virginia.edu';
 	$USERNAME = 'jpg3re';
-	$PASSWORD = 'password';
+	$PASSWORD = 'nah1Ughe';
 	$DATABASE = 'jpg3re';
 ?>
 
