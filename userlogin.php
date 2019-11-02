@@ -1,3 +1,9 @@
+<html>
+<script src="js/nav.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="css/home.css">
+
+</html>
 <?php
      require_once('library.php');
      $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
