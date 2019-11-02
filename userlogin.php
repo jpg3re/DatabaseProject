@@ -8,7 +8,22 @@ mysqli_connect_error());
            return null;
      }
      // Form the SQL query (a SELECT query)
-     $sql="SELECT * FROM user WHERE username=username, password=password";
+     $username = (isset($_REQUEST['username']) ? $_REQUEST['username'] : null);
+     $password = (isset($_REQUEST['password']) ? $_REQUEST['password'] : null);
+     //$statement =$db->prepare("SELECT * FROM Ingredients WHERE user='$username' ORDER BY recipe_id ASC");
+     //$statement->execute();
+     $sql="SELECT * FROM user WHERE username='$username' AND password='$password'";
      $result = mysqli_query($con,$sql);
+     
+    if(mysqli_num_rows($result)>0){
+     while ($row = $result->fetch_row()) {
+          session_start();
+          $_SESSION["username"]=$row[2];
+          echo $row[2];
+      }
+    }else{
+         echo "Incorrect Password";
+    }
+     
      mysqli_close($con);
 ?>

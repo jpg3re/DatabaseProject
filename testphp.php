@@ -2,7 +2,8 @@
 <head><title>Introduction to PHP</title></head>
 <body>
 
-  <?php
+	<?php
+	session_start();
 	echo "Hi, I'm a PHP script!<BR><BR>";
 	$i = 0; 
 	echo "The variable \"i\" is " . $i;
