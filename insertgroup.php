@@ -17,20 +17,22 @@
         VALUES
         ('$_POST[mood]','$_POST[location]','$_username')"; //insert mood, location, and username into group table
         
-        $sql="SELECT uid FROM user WHERE username='$username'";//selecting userid from session variable
-        $result = mysqli_query($con,$sql);
-        if(mysqli_num_rows($result)>0){
-        $row= $result->fetch_row();
+       $sql1="SELECT uid FROM user WHERE username='$username'";//selecting userid from session variable
+        $result1 = mysqli_query($con,$sql1);
+        //if(mysqli_num_rows($result)>0){
+        $row= $result1->fetch_row();
         $uid=$row[0];
-        
-        $sql="SELECT gid FROM `group` WHERE leader='$username'";//selecting userid from session variable
-        $result = mysqli_query($con,$sql);
-        $row= $result->fetch_row();
+        echo "$uid";
+        $sql2="SELECT gid FROM `group` WHERE leader='$username'";//selecting userid from session variable
+        $result2 = mysqli_query($con,$sql2);
+        $row= $result2->fetch_row();
         $gid=$row[0];
-        }
-        $sql="INSERT INTO participates (gid,uid) 
+	echo "Group id: $gid";
+
+        //}
+        $sql="INSERT INTO participates (uid,gid) 
         VALUES
-        ('$_gid','$_uid')";
+        ($_uid,$_gid)";
 
         if (!mysqli_query($con,$sql))
         {
