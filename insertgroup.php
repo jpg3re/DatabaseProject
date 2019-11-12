@@ -13,7 +13,7 @@
         echo "Showing results for User: $username ";
         echo "<br>";
         // Form the SQL query (an INSERT query)
-        $sql="INSERT INTO `group` (mood,location,leader) 
+        $sql="INSERT INTO `group` (mood,location,leader)
         VALUES
         ('$_POST[mood]','$_POST[location]','$_username')"; //insert mood, location, and username into group table
         
