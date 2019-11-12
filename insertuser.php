@@ -14,7 +14,11 @@
      {
      die('Error: ' . mysqli_error($con));
      }
-   echo "1 record added"; // Output to user
+   //echo "1 record added"; // Output to user
+   $username = (isset($_REQUEST['username']) ? $_REQUEST['username'] : null);   
+   session_start();
+   $_SESSION["username"]=$username;
+   header('Location: myList.php');
    mysqli_close($con);
 ?>
 

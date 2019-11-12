@@ -12,14 +12,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" id="home_nav" href="home.html">Home</a>
+	<li class="nav-item">
+          <a class="nav-link" id="home_nav" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="create_nav" href="myList.php">My Queue</a>
+          <a class="nav-link" id="create_nav" href="myList.php">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="recipes_nav" href="addsong.html">Add Song</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="recipes_nav" href="create_group.html">Create Group</a>
         </li>
       </ul>
     </div>
