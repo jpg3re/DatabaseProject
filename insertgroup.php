@@ -15,12 +15,28 @@
         // Form the SQL query (an INSERT query)
         $sql="INSERT INTO `group` (mood,location,leader)
         VALUES
-        ('$_POST[mood]','$_POST[location]','$username')";
+        ('$_POST[mood]','$_POST[location]','$_username')"; //insert mood, location, and username into group table
         
+        $sql="SELECT uid FROM user WHERE username='$username'";//selecting userid from session variable
+        $result = mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)>0){
+        $row= $result->fetch_row();
+        $uid=$row[0];
+        
+        $sql="SELECT gid FROM `group` WHERE leader='$username'";//selecting userid from session variable
+        $result = mysqli_query($con,$sql);
+        $row= $result->fetch_row();
+        $gid=$row[0];
+        }
+        $sql="INSERT INTO participates (gid,uid) 
+        VALUES
+        ('$_gid','$_uid')";
+
         if (!mysqli_query($con,$sql))
         {
         die('Error: ' . mysqli_error($con));
         }
+
     echo "1 record added"; // Output to user
     mysqli_close($con);
     }else{
