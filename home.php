@@ -28,10 +28,15 @@
     </div>
   </nav>
   <h1>Welcome to MusicDB</h1>
-
-  <a class="btn btn-primary" href="signup.html" role="button">Click to sign up</a>
-  <a class="btn btn-primary" href="login.html" role="button">Click to Log in</a>
-
+  <?php
+  session_start();
+  if(!(isset($_SESSION["username"]))){
+  ?>  
+  	<a class="btn btn-primary" href="signup.html" role="button">Click to sign up</a>
+  	<a class="btn btn-primary" href="login.html" role="button">Click to Log in</a>
+  <?php
+  }
+  ?>
 </body>
 
 </html>
