@@ -30,6 +30,8 @@
   
 </body>
 
+<h2>Profile Page</h2>
+
 </html>
 <?php
      require_once('library.php');
@@ -43,7 +45,7 @@ mysqli_connect_error());
      session_start();
     if(isset($_SESSION["username"])){
     $username=$_SESSION["username"];
-    echo "Showing results for User: $username ";
+    echo "Username: $username ";
     echo "<br>";
     $sql="SELECT uid FROM user WHERE username='$username'";//selecting userid from session variable
     $result = mysqli_query($con,$sql);
@@ -60,6 +62,9 @@ mysqli_connect_error());
             $gid=$row[0];
             echo "Group ID: $gid";
             echo "<br>";
+	    echo "<br>";
+	    echo "Group's Queue:";
+	    echo "<br>";
 
             $sql="SELECT sid FROM queue WHERE gid='$gid' ";//selecting all the song ids on queue for a group id
             $result = mysqli_query($con,$sql);
