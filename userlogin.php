@@ -25,7 +25,8 @@ mysqli_connect_error());
      while ($row = $result->fetch_row()) {
           session_start();
           $_SESSION["username"]=$row[2];
-          echo $row[2];
+          //echo $row[2];
+          header('Location: home.html');
       }
     }else{
          echo "Incorrect Password";

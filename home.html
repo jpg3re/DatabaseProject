@@ -19,7 +19,7 @@
           <a class="nav-link" id="create_nav" href="myList.php">My Queue</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="recipes_nav" href="searchsong.php">Add Song</a>
+          <a class="nav-link" id="recipes_nav" href="addsong.html">Add Song</a>
         </li>
       </ul>
     </div>
