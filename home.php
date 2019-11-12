@@ -36,6 +36,11 @@
   	<a class="btn btn-primary" href="login.html" role="button">Click to Log in</a>
   <?php
   }
+  else {
+  ?>
+        <a class="btn btn-primary" href="logout.php" role="button">Log Out</a>
+  <?php
+  }
   ?>
 </body>
 
