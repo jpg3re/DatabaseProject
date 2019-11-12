@@ -5,7 +5,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Website Name</a>
+    <a class="navbar-brand" href="#">MusicDB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
       </ul>
     </div>
   </nav>
-  <h1>Welcome to Our Website!</h1>
+  <h1>Welcome to MusicDB</h1>
 
   <a class="btn btn-primary" href="signup.html" role="button">Click to sign up</a>
   <a class="btn btn-primary" href="login.html" role="button">Click to Log in</a>
