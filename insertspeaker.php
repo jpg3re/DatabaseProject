@@ -7,18 +7,15 @@
      echo "Failed to connect to MySQL: " . mysqli_connect_error();
      }
    // Form the SQL query (an INSERT query)
-   $sql="INSERT INTO user (location, username, password)
+   $sql="INSERT INTO speaker (name, battery, location)
    VALUES
-   ('$_POST[location]','$_POST[username]','$_POST[password]')";
+   ('$_POST[name]','$_POST[battery]','$_POST[location]')";
    if (!mysqli_query($con,$sql))
      {
      die('Error: ' . mysqli_error($con));
      }
-   //echo "1 record added"; // Output to user
-   $username = (isset($_REQUEST['username']) ? $_REQUEST['username'] : null);   
-   session_start();
-   $_SESSION["username"]=$username;
-   header('Location: myList.php');
+   echo "Successfully added your speaker"; // Output to user
+   header('Location: config_speaker.html');
    mysqli_close($con);
 ?>
 

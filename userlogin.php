@@ -26,7 +26,7 @@ mysqli_connect_error());
           session_start();
           $_SESSION["username"]=$row[2];
           //echo $row[2];
-          header('Location: home.html');
+          header('Location: myList.php');
       }
     }else{
          echo "Incorrect Password";

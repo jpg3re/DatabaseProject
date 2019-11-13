@@ -5,27 +5,35 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Website Name</a>
+    <a class="navbar-brand" href="#">MusicDB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" id="home_nav" href="home.html">Home</a>
+	<li class="nav-item">
+          <a class="nav-link" id="home_nav" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="create_nav" href="myList.php">My Queue</a>
+          <a class="nav-link" id="create_nav" href="myList.php">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="recipes_nav" href="addsong.html">Add Song</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="recipes_nav" href="create_group.html">Create Group</a>
+        </li>
+	<li class="nav-item">
+          <a class="nav-link" id="recipes_nav" href="config_speaker.html">Configure New Speaker</a>
         </li>
       </ul>
     </div>
   </nav>
   
 </body>
+
+<h2>Profile Page</h2>
 
 </html>
 <?php
@@ -40,7 +48,7 @@ mysqli_connect_error());
      session_start();
     if(isset($_SESSION["username"])){
     $username=$_SESSION["username"];
-    echo "Showing results for User: $username ";
+    echo "Username: $username ";
     echo "<br>";
     $sql="SELECT uid FROM user WHERE username='$username'";//selecting userid from session variable
     $result = mysqli_query($con,$sql);
@@ -57,6 +65,9 @@ mysqli_connect_error());
             $gid=$row[0];
             echo "Group ID: $gid";
             echo "<br>";
+	    echo "<br>";
+	    echo "Group's Queue:";
+	    echo "<br>";
 
             $sql="SELECT sid FROM queue WHERE gid='$gid' ";//selecting all the song ids on queue for a group id
             $result = mysqli_query($con,$sql);
