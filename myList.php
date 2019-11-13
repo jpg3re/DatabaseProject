@@ -48,43 +48,65 @@ mysqli_connect_error());
      session_start();
     if(isset($_SESSION["username"])){
     $username=$_SESSION["username"];
-    echo "Username: $username ";
-    echo "<br>";
     $sql="SELECT uid FROM user WHERE username='$username'";//selecting userid from session variable
     $result = mysqli_query($con,$sql);
      if(mysqli_num_rows($result)>0){
         $row= $result->fetch_row();
         $uid=$row[0];
-        echo "User ID: $uid";
-        echo "<br>";
 
         $sql="SELECT gid FROM participates WHERE uid='$uid' ";//selecting group id from userid
         $result = mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
             $row= $result->fetch_row();
             $gid=$row[0];
-            echo "Group ID: $gid";
-            echo "<br>";
-	    echo "<br>";
-	    echo "Group's Queue:";
-	    echo "<br>";
-
-            $sql="SELECT sid FROM queue WHERE gid='$gid' ";//selecting all the song ids on queue for a group id
+            $sql="SELECT * FROM `group` WHERE gid='$gid' ";
             $result = mysqli_query($con,$sql);
+            $row=$result->fetch_row();
+            $location=$row[1];
+            $mood=$row[2];
+            echo "<div class='card'>
+            <div class='card-body'>
+              Group Location: $location with mood: $mood
+            </div>
+            </div>";
+
+            echo "<table class='table'>
+            <thead>
+              <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>Song</th>
+                <th scope='col'>Artist</th>
+                <th scope='col'>Mood</th>
+              </tr>
+            </thead>
+            <tbody>";
+
+            $sql="SELECT sid FROM queue WHERE gid='$gid' ORDER BY position ASC ";//selecting all the song ids on queue for a group id
+            $result = mysqli_query($con,$sql);
+            $count=0;
             $songid;
             if(mysqli_num_rows($result)>0){
                 while ($row = $result->fetch_row()) {
+                    $count++;
                     $songid=$row[0];
-                     echo "Song ID: $songid";
+                    
 
                     $sql2="SELECT * FROM song WHERE sid ='$songid' ";
                     $result2=mysqli_query($con,$sql2);
                     $row2=$result2->fetch_row();
                     $songName=$row2[1];
-                    echo " Name : $songName";
-                    echo "<br>";
+                    $artistName=$row2[2];
+                    $mood=$row2[3];
+                    echo "<tr>
+                    <th scope='row'>$count</th>
+                    <td>$songName</td>
+                    <td>$artistName</td>
+                    <td>$mood</td>
+                    </tr>";
 
                 }
+                echo "</tbody>";
+                echo "</table";
             }else{
                 echo "Please add songs to queue";
             }
