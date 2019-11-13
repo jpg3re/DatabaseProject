@@ -18,8 +18,13 @@
 			$name = $row['name'];
 			$battery = $row['battery'];
 			$location = $row['location'];
-			echo "<tr><td>$spid</td><td>$name</td><td>$battery</td><td>$location</td><td><button>Add to Group</button></td></tr>";
-		}
+			echo "<tr><td>$spid</td><td>$name</td><td>$battery</td><td>$location</td><td>
+			<form action='addSpeaker.php' method='post'> 
+      			<input type='submit' value='Add Speaker to Group'> 
+      			<input type='hidden' name='spid' value=$spid>
+      		</form>
+			</td></tr>";
+		} 
 		echo "</table>";
 		$stmt->close();
 	}
