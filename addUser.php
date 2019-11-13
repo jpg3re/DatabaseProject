@@ -20,23 +20,19 @@
        if(mysqli_num_rows($result)>0){
             $row= $result->fetch_row();
             $gid=$row[0];
-            echo "gid : $gid     . ";
-         
+            $uid=$_REQUEST['uid'];
+            echo "gid: $gid   .   uid: $uid";
 
-            $sql="SELECT sid FROM queue WHERE gid='$gid' ";//selecting all the song ids on queue for a group id
-            $result = mysqli_query($con,$sql);
-            $numRows= mysqli_num_rows($result);
-            $sid=$_REQUEST['sid'];
-            echo"sid : $sid    . ";
-            echo "number of rows: $numRows     . ";
-            $sql="INSERT INTO queue (gid, position, sid)
+            $sql="INSERT INTO `participates` (uid, gid)
             VALUES
-            ($gid,$numRows,$sid)";
-            mysqli_query($con,$sql);
+            ($uid,$gid)";
+            if(mysqli_query($con,$sql)){
+                echo "successfully added";
+            }else{
+                $sql="UPDATE participates SET gid=$gid WHERE uid=$uid";
+                mysqli_query($con,$sql);
+            }
             header('Location: myList.php');
-        }
-        else{
-            echo "not in a group";
         }
     }
    mysqli_close($con);

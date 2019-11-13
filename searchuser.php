@@ -17,7 +17,12 @@
 			$uid = $row['uid'];
 			$username = $row['username'];
 			$location = $row['location'];
-			echo "<tr><td>$uid</td><td>$username</td><td>$location</td><td><button>Add to Group</button></td></tr>";
+			echo "<tr><td>$uid</td><td>$username</td><td>$location</td><td>
+			<form action='addUser.php' method='post'> 
+      			<input type='submit' value='Add User'> 
+      			<input type='hidden' name='uid' value=$uid>
+      		</form>
+			</td></tr>";
 		}
 		echo "</table>";
 		$stmt->close();
