@@ -53,7 +53,6 @@ mysqli_connect_error());
      if(mysqli_num_rows($result)>0){
         $row= $result->fetch_row();
         $uid=$row[0];
-
         $sql="SELECT gid FROM participates WHERE uid='$uid' ";//selecting group id from userid
         $result = mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
@@ -69,7 +68,6 @@ mysqli_connect_error());
               Group Location: $location with mood: $mood
             </div>
             </div>";
-
             echo "<table class='table'>
             <thead>
               <tr>
@@ -80,7 +78,6 @@ mysqli_connect_error());
               </tr>
             </thead>
             <tbody>";
-
             $sql="SELECT sid FROM queue WHERE gid='$gid' ORDER BY position ASC ";//selecting all the song ids on queue for a group id
             $result = mysqli_query($con,$sql);
             $count=0;
@@ -90,7 +87,6 @@ mysqli_connect_error());
                     $count++;
                     $songid=$row[0];
                     
-
                     $sql2="SELECT * FROM song WHERE sid ='$songid' ";
                     $result2=mysqli_query($con,$sql2);
                     $row2=$result2->fetch_row();
@@ -103,23 +99,27 @@ mysqli_connect_error());
                     <td>$artistName</td>
                     <td>$mood</td>
                     </tr>";
-
                 }
                 echo "</tbody>";
                 echo "</table";
-            }else{
+            } else {
                 echo "Please add songs to queue";
             }
-        }else{
+        } else {
             echo "This user is not assigned to a group";
         }
     }
       
-    }else{
+    } else {
         echo "Please sign in to view your songs";
     }
-    // $result = mysqli_query($con,$sql);
      
      
      mysqli_close($con);
 ?>
+
+<html>
+
+<a href="exportCSV.php" class="btn btn-primary">Export Queue</a
+
+</html>
