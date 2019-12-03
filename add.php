@@ -33,7 +33,7 @@
             VALUES
             ($gid,$numRows,$sid)";
             mysqli_query($con,$sql);
-            header('Location: myList.php');
+            //header('Location: myList.php');
         }
         else{
             echo "not in a group";

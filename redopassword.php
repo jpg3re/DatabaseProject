@@ -25,13 +25,6 @@
      //$sql2="UPDATE user SET password=$hash WHERE username=$username";
        // $result1 = mysqli_query($con,$sql2);
      }
-
-
-     $sql="DELETE FROM user";
-     if (!mysqli_query($con,$sql))
-     {
-     die('Error: ' . mysqli_error($con));
-     }
      for($i=0;$i<99;$i++){
          $pass=$PassArray[$i];
          $user=$UserArray[$i];
@@ -42,16 +35,12 @@
          echo "<br/>";
          echo $pass;
          echo "<br/>";
-         $sql="INSERT INTO user (uid,location, username, password)
+        /* $sql="INSERT INTO user (uid,location, username, password)
         VALUES
-        ('$uid','$location','$user','$pass')";
+        ('$uid','$location','$user','$pass')";*/
 
         //$sql="UPDATE user SET password='$pass' WHERE username='$user' ";
         //$result1 = mysqli_query($con,$sql);
-        if (!mysqli_query($con,$sql))
-     {
-     die('Error: ' . mysqli_error($con));
-     }
      }
 
 

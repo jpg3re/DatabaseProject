@@ -102,6 +102,13 @@ mysqli_connect_error());
                 }
                 echo "</tbody>";
                 echo "</table";
+                ?>
+                <html>
+
+                  <a href="exportCSV.php" class="btn btn-primary">Export Queue</a>
+
+                </html> 
+                <?php
             } else {
                 echo "Please add songs to queue";
             }
@@ -118,8 +125,4 @@ mysqli_connect_error());
      mysqli_close($con);
 ?>
 
-<html>
 
-<a href="exportCSV.php" class="btn btn-primary">Export Queue</a
-
-</html>
