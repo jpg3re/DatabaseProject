@@ -1,12 +1,10 @@
 <?php
-   include_once("library.php"); // To connect to the database
+   include_once("library.php");
    $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-   // Check connection
    if (mysqli_connect_errno())
      {
      echo "Failed to connect to MySQL: " . mysqli_connect_error();
      }
-   // Form the SQL query (an INSERT query)
    $sql="INSERT INTO user (location, username, password)
    VALUES
    ('$_POST[location]','$_POST[username]','$_POST[password]')";
@@ -14,7 +12,6 @@
      {
      die('Error: ' . mysqli_error($con));
      }
-   //echo "1 record added"; // Output to user
    $username = (isset($_REQUEST['username']) ? $_REQUEST['username'] : null);   
    session_start();
    $_SESSION["username"]=$username;
