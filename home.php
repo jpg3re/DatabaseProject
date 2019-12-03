@@ -24,6 +24,9 @@
 	<li class="nav-item">
           <a class="nav-link" id="recipes_nav" href="create_group.html">Create Group</a>
         </li>
+	<li class="nav-item">
+          <a class="nav-link" id="recipes_nav" href="config_speaker.html">Configure New Speaker</a>
+        </li>
       </ul>
     </div>
   </nav>

@@ -17,8 +17,13 @@
 			$sid = $row['sid'];
 			$name = $row['name'];
 			$artist = $row['artist'];
-			$mood = $row['mood'];
-			echo "<tr><td>$sid</td><td>$name</td><td>$artist</td><td>$mood</td><td><button>Add to Queue</button></td></tr>";
+      $mood = $row['mood'];
+      echo "<tr><td>$sid</td><td>$name</td><td>$artist</td><td>$mood</td><td>
+      <form action='add.php' method='post'> 
+      <input type='submit' value='Run me now!'> 
+      <input type='hidden' name='sid' value=$sid>
+      </form>
+      </td></tr>";
 		}
 		echo "</table>";
 		$stmt->close();

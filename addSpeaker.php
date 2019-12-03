@@ -14,21 +14,21 @@
     if(mysqli_num_rows($result)>0){
        $row= $result->fetch_row();
        $uid=$row[0];
+
        $sql="SELECT gid FROM participates WHERE uid='$uid' ";//selecting group id from userid
        $result = mysqli_query($con,$sql);
        if(mysqli_num_rows($result)>0){
             $row= $result->fetch_row();
             $gid=$row[0];
-            $uid=$_REQUEST['uid'];
-            echo "gid: $gid   .   uid: $uid";
+            $spid=$_REQUEST['spid'];
 
-            $sql="INSERT INTO `participates` (uid, gid)
+            $sql="INSERT INTO plays (spid, gid)
             VALUES
-            ($uid,$gid)";
+            ($spid,$gid)";
             if(mysqli_query($con,$sql)){
                 echo "successfully added";
             }else{
-                $sql="UPDATE participates SET gid=$gid WHERE uid=$uid";
+                $sql="UPDATE plays SET gid=$gid WHERE spid=$spid";
                 mysqli_query($con,$sql);
             }
             header('Location: myList.php');
