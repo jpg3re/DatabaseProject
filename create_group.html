@@ -80,3 +80,36 @@
 </body>
 
 </html>
+
+<html>
+<head>
+        <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
+        <script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+        <title>Create/Edit Group</title>
+        <script>
+                $(document).ready(function () {
+                        $("#searchspeaker").change(function () {
+                                $.ajax({
+                                        url: 'searchspeaker.php',
+                                        data: { searchspeaker: $("#searchspeaker").val() },
+                                        success: function (data) {
+                                                $('#searchspeakerresult').html(data);
+                                        }
+                                });
+                        });
+                });
+        </script>
+</head>
+
+<body>
+        <br>
+        <h2>Add an Existing Speaker to Your Group</h2>
+        <h5>Search by Name of the Speaker</h5>
+
+        <input class="xlarge" id="searchspeaker" type="search" size="30" placeholder="Speaker Name Contains" />
+
+        <div id="searchspeakerresult">Search Result</div>
+
+</body>
+
+</html>
