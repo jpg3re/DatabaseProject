@@ -91,7 +91,7 @@ mysqli_connect_error());
                     $result2=mysqli_query($con,$sql2);
                     $row2=$result2->fetch_row();
                     $songName=$row2[1];
-                    $artistName=$row2[2];
+                    $artistName=rtrim($row2[2], ',');
                     $mood=$row2[3];
                     echo "<tr>
                     <th scope='row'>$count</th>
