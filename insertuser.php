@@ -5,9 +5,11 @@
      {
      echo "Failed to connect to MySQL: " . mysqli_connect_error();
      }
+   $password=$_POST[password];
+   $hashed_password=password_hash($password, PASSWORD_DEFAULT);
    $sql="INSERT INTO user (location, username, password)
    VALUES
-   ('$_POST[location]','$_POST[username]','$_POST[password]')";
+   ('$_POST[location]','$_POST[username]','$hashed_password')";
    if (!mysqli_query($con,$sql))
      {
      die('Error: ' . mysqli_error($con));
@@ -15,7 +17,7 @@
    $username = (isset($_REQUEST['username']) ? $_REQUEST['username'] : null);   
    session_start();
    $_SESSION["username"]=$username;
-   header('Location: myList.php');
+   //header('Location: myList.php');
    mysqli_close($con);
 ?>
 
