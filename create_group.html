@@ -92,17 +92,26 @@
         <script>
                 $(document).ready(function () {
                         $("#searchspeaker").change(function () {
+<<<<<<< HEAD
+=======
 
+>>>>>>> ebd97110a6a4fbb772823646378b52c98517164d
                                 $.ajax({
                                         url: 'searchspeaker.php',
                                         data: { searchspeaker: $("#searchspeaker").val() },
                                         success: function (data) {
                                                 $('#searchspeakerresult').html(data);
+<<<<<<< HEAD
+                                        }
+                                });
+                        });
+=======
 
                                         }
                                 });
                         });
 
+>>>>>>> ebd97110a6a4fbb772823646378b52c98517164d
                 });
         </script>
 </head>

@@ -14,7 +14,6 @@
     if(mysqli_num_rows($result)>0){
        $row= $result->fetch_row();
        $uid=$row[0];
-
        $sql="SELECT gid FROM participates WHERE uid='$uid' ";//selecting group id from userid
        $result = mysqli_query($con,$sql);
        if(mysqli_num_rows($result)>0){

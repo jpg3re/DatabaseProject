@@ -9,32 +9,40 @@
      }
     session_start();
     if(isset($_SESSION["username"])){
-        $username=$_SESSION["username"];
+	
+	$username=$_SESSION["username"];
+
+	$sql1="SELECT uid FROM user WHERE username='$username'";//selecting userid from session variable
+        $result1 = mysqli_query($con,$sql1);
+        //if(mysqli_num_rows($result)>0){
+        $row= $result1->fetch_row();
+        $uid=intval($row[0]);
+        echo "User id: $uid";
+
         echo "Showing results for User: $username ";
         echo "<br>";
         // Form the SQL query (an INSERT query)
         $sql="INSERT INTO `group` (mood,location,leader)
         VALUES
-        ('$_POST[mood]','$_POST[location]','$_username')"; //insert mood, location, and username into group table
+        ('$_POST[mood]','$_POST[location]','$uid')"; //insert mood, location, and username into group table
         
-       $sql1="SELECT uid FROM user WHERE username='$username'";//selecting userid from session variable
-        $result1 = mysqli_query($con,$sql1);
-        //if(mysqli_num_rows($result)>0){
-        $row= $result1->fetch_row();
-        $uid=$row[0];
-        echo "$uid";
-        $sql2="SELECT gid FROM `group` WHERE leader='$username'";//selecting userid from session variable
+        if (!mysqli_query($con,$sql))
+        {
+        die('Error: ' . mysqli_error($con));
+        }
+
+        $sql2="SELECT gid FROM `group` WHERE leader='$uid'";//selecting userid from session variable
         $result2 = mysqli_query($con,$sql2);
         $row= $result2->fetch_row();
-        $gid=$row[0];
+        $gid=intval($row[0]);
 	echo "Group id: $gid";
 
         //}
-        $sql="INSERT INTO participates (uid,gid) 
+        $sql3="INSERT INTO participates (uid,gid) 
         VALUES
-        ($_uid,$_gid)";
+        ('$uid','$gid')";
 
-        if (!mysqli_query($con,$sql))
+        if (!mysqli_query($con,$sql3))
         {
         die('Error: ' . mysqli_error($con));
         }
